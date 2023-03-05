@@ -4,12 +4,9 @@ import Discussion from 'flarum/models/Discussion';
 import DiscussionListItem from 'flarum/components/DiscussionListItem';
 import DiscussionList from 'flarum/components/DiscussionList';
 import abbreviateNumber from 'flarum/utils/abbreviateNumber';
-import DiscussionView from '../models/DiscussionView';
 import app from 'flarum/app';
 
 export default function () {
-    app.store.models.discussionviews = DiscussionView; //discussionviews = serializer type
-
     Discussion.prototype.views = Model.hasMany('latestViews');
     Discussion.prototype.uniqueViews = Model.hasMany('uniqueViews');
     Discussion.prototype.canReset = Model.attribute('canReset');
