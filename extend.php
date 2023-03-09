@@ -2,6 +2,7 @@
 
 use Flarum\Api\Controller\ListDiscussionsController;
 use Flarum\Api\Serializer\DiscussionSerializer;
+use Flarum\Api\Controller\ShowDiscussionController;
 use Flarum\Discussion\Event\Saving;
 use Flarum\Extend\ApiController;
 use Flarum\Extend\ApiSerializer;
@@ -13,7 +14,6 @@ use Flarum\Extend\Settings;
 use Flarum\Settings\SettingsRepositoryInterface;
 
 $settings = resolve(SettingsRepositoryInterface::class);
-
 
 return [
     (new Frontend('forum'))
@@ -46,6 +46,7 @@ return [
 
     (new ApiController(ShowDiscussionController::class))
         ->prepareDataForSerialization(Listeners\AddDiscussionViewHandler::class),
+
 
     (new ApiController(ListDiscussionsController::class))
         ->addSortField('view_count'),
